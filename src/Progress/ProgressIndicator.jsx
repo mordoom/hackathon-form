@@ -7,6 +7,7 @@ import { useFormikContext } from 'formik';
 import { formConfig } from '../InputForm/formConfig';
 import { PercentageProgressBar } from './PercentageProgressBar';
 import clamp from 'lodash/clamp';
+import uniq from 'lodash/uniq';
 
 const STICKY_STYLES = {
   boxShadow: '0px 4px 6px 0px rgba(171,171,171,.2)',
@@ -50,14 +51,10 @@ export const ProgressIndicator = ({ currentStep }) => {
   const context = useFormikContext();
 
   window.context = context;
-
   const numFieldsInStep = Object.keys(validationSchema.describe().fields).length;
-  let numFieldsValid = 0;
+  const errors = context.dirty ? context.errors : context.initialErrors;
 
-  if (context.dirty) {
-    numFieldsValid = numFieldsInStep - Object.keys(context.errors).length;
-  }
-
+  const numFieldsValid = numFieldsInStep - Object.keys(errors).length;
   const percentage = getPercentage(from, to, numFieldsValid / numFieldsInStep);
   
   return (
