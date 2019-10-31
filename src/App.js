@@ -2,7 +2,6 @@ import React from "react";
 import "./App.css";
 import { Header } from "./Header";
 import InputForm from "./InputForm";
-import { ProgressIndicator } from "./Progress";
 
 export default class App extends React.Component {
   constructor(props) {
@@ -22,12 +21,13 @@ export default class App extends React.Component {
   };
 
   render () {
+    const { currentStep } = this.state;
+
     return (
       <div className="App">
         <Header />
-        <ProgressIndicator />
         <InputForm
-          currentStep={this.state.currentStep}
+          currentStep={currentStep}
           onNextStep={this.handleNextStep}
           onPrevStep={this.handlePrevStep}
         />

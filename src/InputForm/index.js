@@ -3,6 +3,7 @@ import { Formik } from "formik";
 import withStyles from "@material-ui/core/styles/withStyles";
 import { Button, Container } from "@material-ui/core";
 import { formConfig } from "./formConfig";
+import { ProgressIndicator } from "../Progress";
 
 const styles = theme => ({
   paper: {
@@ -38,16 +39,19 @@ class InputForm extends Component {
     const activeStep = formConfig[currentStep - 1];
     const ActiveStep = activeStep.component;
     return (
-      <div>
-        <Container maxWidth="md">
-          <h1>Form</h1>
-          <Formik
-            initialValues={values}
-            enableReinitialize={false}
-            validationSchema={activeStep.validationSchema}
-            onSubmit={onNextStep}
-          >
-            {props => (
+
+      <Formik
+        initialValues={values}
+        enableReinitialize={false}
+        validationSchema={activeStep.validationSchema}
+        validateOnMount
+        onSubmit={onNextStep}
+      >
+        {props => (
+
+          <div>
+            <ProgressIndicator currentStep={currentStep} />
+            <Container maxWidth="md">
               <form onSubmit={props.handleSubmit}>
                 <ActiveStep {...props} />
                 {currentStep < formConfig.length && (
@@ -76,10 +80,10 @@ class InputForm extends Component {
                   </Button>
                 )}
               </form>
-            )}
-          </Formik>
-        </Container>
-      </div>
+            </Container>
+          </div>
+        )}
+      </Formik>
     );
   }
 }

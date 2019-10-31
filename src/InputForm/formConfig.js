@@ -6,11 +6,13 @@ export const formConfig = [
   {
     step: 1,
     component: Step1,
-    validationSchema: step1Schema
+    validationSchema: step1Schema,
+    progress: { from: 0, to: 61 }
   },
   {
     step: 2,
     component: Step2,
-    validationSchema: step2Schema
+    validationSchema: step2Schema,
+    progress: { from: 61, to: 91 }
   }
 ];
