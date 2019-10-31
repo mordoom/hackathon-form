@@ -39,7 +39,7 @@ const getPercentage = (from, to, fraction) => {
   const total = to - from;
   console.log('total is', total, 'fraction:', fraction);
   
-  const progress = Math.round(fraction * total);
+  const progress = Math.round(fraction * total) + from;
   return clamp(progress, from, to);
 }
 
@@ -60,9 +60,6 @@ export const ProgressIndicator = ({ currentStep }) => {
 
   const percentage = getPercentage(from, to, numFieldsValid / numFieldsInStep);
   
-  console.log('numFields', numFieldsInStep, 'numValid', numFieldsValid)
-  console.log('progress percentage', percentage);
-
   return (
     <StyledSticky>
       <Sticky>
