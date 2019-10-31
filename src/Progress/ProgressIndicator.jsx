@@ -18,10 +18,6 @@ const StyledSticky = styled.div`
 const Container = styled.div`
   background: white;
   padding: 0 8px;
-
-  @media only screen and (min-width: ${BREAK_POINTS.Min.SM}) {
-    padding: 0 16px;
-  }
 `;
 
 const Inner = styled.div`
