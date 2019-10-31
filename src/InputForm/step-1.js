@@ -1,8 +1,7 @@
 import React from "react";
-import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 
-export const Form = props => {
+export const Step1 = props => {
   const {
     values: { name, email, password, confirmPassword },
     errors,
@@ -18,11 +17,7 @@ export const Form = props => {
     setFieldTouched(name, true, false);
   };
   return (
-    <form
-      onSubmit={() => {
-        alert("submitted");
-      }}
-    >
+    <>
       <TextField
         id="name"
         name="name"
@@ -65,15 +60,6 @@ export const Form = props => {
         value={confirmPassword}
         onChange={change.bind(null, "confirmPassword")}
       />
-      <Button
-        type="submit"
-        fullWidth
-        variant="raised"
-        color="primary"
-        disabled={!isValid}
-      >
-        Submit
-      </Button>
-    </form>
+    </>
   );
 };
