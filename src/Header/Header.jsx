@@ -4,14 +4,9 @@ import { Logo, Colors } from '@origin-digital/style-guide';
 
 const Masthead = styled.div`
   background: white;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow:0px 4px 6px 0px rgba(171,171,171,.2);
 `;
 
 const SecureSite = styled.div`
