@@ -5,6 +5,7 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormLabel from "@material-ui/core/FormLabel";
 import InputForm from ".";
 import { FormikTextField } from "./FormikTextField";
+import { useStyles } from "./styles";
 
 const CreditCard = ({
   values,
@@ -87,93 +88,91 @@ const BankAccount = ({
   </>
 );
 
-export class Step2 extends React.Component {
-  render() {
-    const { values, currentStep, onNextStep, onPrevStep } = this.props;
-    return (
-      <InputForm
-        values={values}
-        currentStep={currentStep}
-        onNextStep={onNextStep}
-        onPrevStep={onPrevStep}
-        render={({
-          values,
-          errors,
-          touched,
-          handleSubmit,
-          handleChange,
-          isValid,
-          setFieldTouched
-        }) => (
-          <>
-            <FormLabel component="legend">
-              Billing and direct debit setup
-            </FormLabel>
-            <RadioGroup
-              aria-label="billing"
-              name="billing"
-              onChange={handleChange}
-              value={values.billing}
-              defaultValue={values.billing}
-            >
-              <FormControlLabel
-                value="creditCard"
-                control={<Radio color="primary" />}
-                label="Credit card"
+export const Step2 = ({ values, currentStep, onNextStep, onPrevStep }) => {
+  const classes = useStyles();
+  return (
+    <InputForm
+      values={values}
+      currentStep={currentStep}
+      onNextStep={onNextStep}
+      onPrevStep={onPrevStep}
+      render={({
+        values,
+        errors,
+        touched,
+        handleSubmit,
+        handleChange,
+        isValid,
+        setFieldTouched
+      }) => (
+        <>
+          <FormLabel className={classes.formLabel} component="legend">
+            Billing and direct debit setup
+          </FormLabel>
+          <RadioGroup
+            aria-label="billing"
+            name="billing"
+            onChange={handleChange}
+            value={values.billing}
+            defaultValue={values.billing}
+          >
+            <FormControlLabel
+              value="creditCard"
+              control={<Radio color="primary" />}
+              label="Credit card"
+            />
+            {values.billing === "creditCard" && (
+              <CreditCard
+                values={values}
+                errors={errors}
+                touched={touched}
+                handleChange={handleChange}
+                setFieldTouched={setFieldTouched}
               />
-              {values.billing === "creditCard" && (
-                <CreditCard
-                  values={values}
-                  errors={errors}
-                  touched={touched}
-                  handleChange={handleChange}
-                  setFieldTouched={setFieldTouched}
-                />
-              )}
-              <FormControlLabel
-                value="bankAccount"
-                control={<Radio color="primary" />}
-                label="Bank account"
+            )}
+            <FormControlLabel
+              value="bankAccount"
+              control={<Radio color="primary" />}
+              label="Bank account"
+            />
+            {values.billing === "bankAccount" && (
+              <BankAccount
+                values={values}
+                errors={errors}
+                touched={touched}
+                handleChange={handleChange}
+                setFieldTouched={setFieldTouched}
               />
-              {values.billing === "bankAccount" && (
-                <BankAccount
-                  values={values}
-                  errors={errors}
-                  touched={touched}
-                  handleChange={handleChange}
-                  setFieldTouched={setFieldTouched}
-                />
-              )}
-              <FormControlLabel
-                value="manual"
-                control={<Radio color="primary" />}
-                label="Pay each bill manually"
-              />
-            </RadioGroup>
-            <FormLabel component="legend">
-              Your bills and letters preference
-            </FormLabel>
-            <RadioGroup
-              aria-label="bills-and-letters"
-              name="billsAndLetters"
-              onChange={handleChange}
-              value={values.billsAndLetters}
-              defaultValue={values.billsAndLetters}
-            >
-              <FormControlLabel
-                value="email"
-                control={<Radio contr color="primary" />}
-                label="By email"
-              />
-              <FormControlLabel
-                value="post"
-                control={<Radio color="primary" />}
-                label="By post"
-              />
-            </RadioGroup>
-          </>
-        )}
-      />
-    );
-  }
-}
+            )}
+            <FormControlLabel
+              value="manual"
+              control={<Radio color="primary" />}
+              label="Pay each bill manually"
+            />
+          </RadioGroup>
+          <FormLabel className={classes.formLabel} component="legend">
+            Your bills and letters preference
+          </FormLabel>
+          <RadioGroup
+            aria-label="bills-and-letters"
+            name="billsAndLetters"
+            onChange={handleChange}
+            value={values.billsAndLetters}
+            defaultValue={values.billsAndLetters}
+          >
+            <FormControlLabel
+              value="email"
+              control={<Radio contr color="primary" />}
+              label="By email"
+            />
+            <FormControlLabel
+              value="post"
+              control={<Radio color="primary" />}
+              label="By post"
+            />
+          </RadioGroup>
+        </>
+      )}
+    />
+  );
+};

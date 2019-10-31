@@ -19,21 +19,32 @@ export const step1Schema = object({
   lifeSupport: string().required("Please select a life support option")
 });
 
+export const VISA_PATTERN = /^4/;
+export const MASTERCARD_PATTERN = /^(?:5[1-5][0-9]{2}|222[1-9]|22[3-9][0-9]|2[3-6][0-9]{2}|27[01][0-9]|2720)/;
+export const BSB_PATTERN = new RegExp(/^\d{3}-?\d{3}$/);
+
 export const step2Schema = object({
   billing: string().required("Please select a billing preference"),
   cardNumber: string().when("billing", {
     is: "creditCard",
-    then: string().required("Please enter your credit card number"),
+    then: string()
+      .matches(MASTERCARD_PATTERN, "This is an invalid credit card number")
+      .min(16)
+      .required("Please enter your credit card number"),
     otherwise: string()
   }),
   expiry: string().when("billing", {
     is: "creditCard",
-    then: string().min(5).required("Please enter your credit card expiry"),
+    then: string()
+      .min(5)
+      .required("Please enter your credit card expiry"),
     otherwise: string()
   }),
   cvv: string().when("billing", {
     is: "creditCard",
-    then: string().min(3).required("Please enter your credit card CVV"),
+    then: string()
+      .min(3)
+      .required("Please enter your credit card CVV"),
     otherwise: string()
   }),
   accountName: string().when("billing", {
@@ -43,12 +54,17 @@ export const step2Schema = object({
   }),
   bsb: string().when("billing", {
     is: "bankAccount",
-    then: string().min(7).required("Please enter your bank BSB"),
+    then: string()
+      .min(7)
+      .matches(BSB_PATTERN, "This is in invalid BSB")
+      .required("Please enter your bank BSB"),
     otherwise: string()
   }),
   accountNumber: string().when("billing", {
     is: "bankAccount",
-    then: string().min(8).required("Please enter your bank account number"),
+    then: string()
+      .min(8)
+      .required("Please enter your bank account number"),
     otherwise: string()
   }),
   billsAndLetters: string().required("Please select a billing preference")

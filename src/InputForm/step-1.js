@@ -3,45 +3,10 @@ import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormLabel from "@material-ui/core/FormLabel";
-import makeStyles from "@material-ui/core/styles/makeStyles";
-import createStyles from "@material-ui/core/styles/createStyles";
 import { ConnectionAddress } from "@origin-digital/originate";
 import InputForm from "./";
 import { FormikTextField } from "./FormikTextField";
-
-const useStyles = makeStyles(theme =>
-  createStyles({
-    textField: {
-      marginBottom: theme.spacing(4),
-      "& label.Mui-focused": {
-        color: "rgb(63, 117, 198)"
-      },
-      "& .MuiInput-underline:after": {
-        borderBottomColor: "rgb(63, 117, 198)"
-      }
-    },
-    button: {
-      backgroundColor: "rgb(236, 0, 0)",
-      padding: theme.spacing(2),
-      borderRadius: 0,
-      textTransform: "none",
-      fontSize: "16px",
-      "&:hover": {
-        backgroundColor: "rgb(179, 0, 0)"
-      },
-      "&:disabled": {
-        backgroundColor: "rgb(248, 173, 173)",
-        color: "white"
-      }
-    },
-    formLabel: { legend: { textAlign: "left" } },
-    radio: {
-      "&$checked": {
-        color: "#ffb432"
-      }
-    }
-  })
-);
+import { useStyles } from "./styles";
 
 export const Step1 = props => {
   const classes = useStyles();
