@@ -18,27 +18,21 @@ const styles = theme => ({
 
 class InputForm extends Component {
   render() {
-    const { currentStep, onNextStep, onPrevStep, values } = this.props;
+    const { currentStep, onNextStep, onPrevStep, values, render } = this.props;
     const activeStep = formConfig[currentStep - 1];
-    const ActiveStep = activeStep.component;
     return (
       <Formik
-        initialValues={values}
         enableReinitialize
+        initialValues={values}
         validationSchema={activeStep.validationSchema}
-        validateOnMount
         onSubmit={onNextStep}
       >
         {props => (
           <div>
             <ProgressIndicator currentStep={currentStep} />
             <Container maxWidth="md">
-              <form
-                onSubmit={values => {
-                  props.handleSubmit(values);
-                }}
-              >
-                <ActiveStep {...props} />
+              <form onSubmit={props.handleSubmit}>
+                {render(props)}
                 {currentStep < formConfig.length && (
                   <Button
                     type="submit"

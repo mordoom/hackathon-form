@@ -5,6 +5,7 @@ import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormLabel from "@material-ui/core/FormLabel";
 import { makeStyles, createStyles } from "@material-ui/core";
+import InputForm from "./";
 
 const useStyles = makeStyles(theme =>
   createStyles({
@@ -69,90 +70,96 @@ const FormikTextField = ({
 
 export const Step1 = props => {
   const classes = useStyles();
-  const {
-    values,
-    errors,
-    touched,
-    handleSubmit,
-    handleChange,
-    isValid,
-    setFieldTouched
-  } = props;
-
   return (
-    <>
-      <FormikTextField
-        label="First name"
-        fieldName="firstName"
-        values={values}
-        textField={classes.textField}
-        errors={errors}
-        touched={touched}
-        handleChange={handleChange}
-        setFieldTouched={setFieldTouched}
-      />
-      <FormikTextField
-        label="Last name"
-        fieldName="lastName"
-        values={values}
-        textField={classes.textField}
-        errors={errors}
-        touched={touched}
-        handleChange={handleChange}
-        setFieldTouched={setFieldTouched}
-      />
-      <FormikTextField
-        label="Email address"
-        fieldName="email"
-        values={values}
-        textField={classes.textField}
-        errors={errors}
-        touched={touched}
-        handleChange={handleChange}
-        setFieldTouched={setFieldTouched}
-      />
-      <FormikTextField
-        label="Phone (landline or mobile)"
-        fieldName="phone"
-        values={values}
-        inputProps={{ maxLength: 10 }}
-        textField={classes.textField}
-        errors={errors}
-        touched={touched}
-        handleChange={handleChange}
-        setFieldTouched={setFieldTouched}
-      />
-      <FormikTextField
-        label="Date of birth (DD/MM/YYYY)"
-        fieldName="dateOfBirth"
-        values={values}
-        inputProps={{ maxLength: 10 }}
-        textField={classes.textField}
-        errors={errors}
-        touched={touched}
-        handleChange={handleChange}
-        setFieldTouched={setFieldTouched}
-      />
-      <FormLabel className={classes.formLabel} component="legend">
-        Life support
-      </FormLabel>
-      <RadioGroup
-        aria-label="life-support"
-        name="lifeSupport"
-        onChange={handleChange}
-        value={values.lifeSupport}
-      >
-        <FormControlLabel
-          value="yes"
-          control={<Radio className={classes.radio} color="primary" />}
-          label="Yes"
-        />
-        <FormControlLabel
-          value="no"
-          control={<Radio className={classes.radio} color="primary" />}
-          label="No"
-        />
-      </RadioGroup>
-    </>
+    <InputForm
+      values={props.values}
+      currentStep={props.currentStep}
+      onNextStep={props.onNextStep}
+      onPrevStep={props.onPrevStep}
+      render={({
+        values,
+        errors,
+        touched,
+        handleSubmit,
+        handleChange,
+        isValid,
+        setFieldTouched
+      }) => (
+        <>
+          <FormikTextField
+            label="First name"
+            fieldName="firstName"
+            values={values}
+            textField={classes.textField}
+            errors={errors}
+            touched={touched}
+            handleChange={handleChange}
+            setFieldTouched={setFieldTouched}
+          />
+          <FormikTextField
+            label="Last name"
+            fieldName="lastName"
+            values={values}
+            textField={classes.textField}
+            errors={errors}
+            touched={touched}
+            handleChange={handleChange}
+            setFieldTouched={setFieldTouched}
+          />
+          <FormikTextField
+            label="Email address"
+            fieldName="email"
+            values={values}
+            textField={classes.textField}
+            errors={errors}
+            touched={touched}
+            handleChange={handleChange}
+            setFieldTouched={setFieldTouched}
+          />
+          <FormikTextField
+            label="Phone (landline or mobile)"
+            fieldName="phone"
+            values={values}
+            inputProps={{ maxLength: 10 }}
+            textField={classes.textField}
+            errors={errors}
+            touched={touched}
+            handleChange={handleChange}
+            setFieldTouched={setFieldTouched}
+          />
+          <FormikTextField
+            label="Date of birth (DD/MM/YYYY)"
+            fieldName="dateOfBirth"
+            values={values}
+            inputProps={{ maxLength: 10 }}
+            textField={classes.textField}
+            errors={errors}
+            touched={touched}
+            handleChange={handleChange}
+            setFieldTouched={setFieldTouched}
+          />
+          <FormLabel className={classes.formLabel} component="legend">
+            Life support
+          </FormLabel>
+          <RadioGroup
+            aria-label="life-support"
+            name="lifeSupport"
+            onChange={handleChange}
+            value={values.lifeSupport}
+          >
+            <FormControlLabel
+              value="yes"
+              control={<Radio className={classes.radio} color="primary" />}
+              label="Yes"
+            />
+            <FormControlLabel
+              value="no"
+              control={<Radio className={classes.radio} color="primary" />}
+              label="No"
+            />
+          </RadioGroup>
+        </>
+      )}
+    />
   );
 };

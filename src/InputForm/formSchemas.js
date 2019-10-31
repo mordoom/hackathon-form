@@ -22,3 +22,5 @@ export const step2Schema = object({
   billing: string().required("Please select a billing preference"),
   billsAndLetters: string().required("Please select a billing preference")
 });
+
+export const step3Schema = object({});
