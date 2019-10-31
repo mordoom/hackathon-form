@@ -1,11 +1,8 @@
 import React, { Component } from "react";
-import { Formik, Form } from "formik";
+import { Formik } from "formik";
 import withStyles from "@material-ui/core/styles/withStyles";
-import { Step1 } from "./step-1";
-import { Step2 } from "./step-2";
-import Paper from "@material-ui/core/Paper";
-import { Button } from "@material-ui/core";
-import { formConfig } from './formConfig';
+import { Button, Container } from "@material-ui/core";
+import { formConfig } from "./formConfig";
 
 const styles = theme => ({
   paper: {
@@ -26,7 +23,14 @@ class InputForm extends Component {
     super(props);
     this.state = {
       activeStepIndex: 1,
-      values: { name: "", email: "", confirmPassword: "", password: "" }
+      values: {
+        firstName: "",
+        lastName: "",
+        email: "",
+        phone: "",
+        dateOfBirth: "",
+        lifeSupport: ""
+      }
     };
   }
 
@@ -46,12 +50,12 @@ class InputForm extends Component {
     const ActiveStep = activeStep.component;
     return (
       <div className={classes.container}>
-        <Paper elevation={1} className={classes.paper}>
+        <Container maxWidth="md">
           <h1>Form</h1>
           <Formik
             initialValues={values}
             enableReinitialize={false}
-            validationSchema={formConfig.validationSchema}
+            validationSchema={activeStep.validationSchema}
             onSubmit={this.handleNextStep}
           >
             {props => (
@@ -60,18 +64,32 @@ class InputForm extends Component {
                 {activeStepIndex < formConfig.length && (
                   <Button
                     type="submit"
+                    variant="contained"
+                    color="primary"
                     disabled={!props.isValid || !props.dirty}
                   >
                     Next step
                   </Button>
                 )}
+                {activeStepIndex === formConfig.length && (
+                  <Button
+                    type="submit"
+                    variant="contained"
+                    color="primary"
+                    disabled={!props.isValid || !props.dirty}
+                  >
+                    Submit
+                  </Button>
+                )}
                 {activeStepIndex > 1 && (
-                  <Button onClick={this.handlePrevStep}>Prev step</Button>
+                  <Button variant="contained" onClick={this.handlePrevStep}>
+                    Prev step
+                  </Button>
                 )}
               </form>
             )}
           </Formik>
-        </Paper>
+        </Container>
       </div>
     );
   }
