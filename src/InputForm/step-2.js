@@ -5,29 +5,12 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormLabel from "@material-ui/core/FormLabel";
 
 export const Step2 = props => {
-  const {
-    values,
-    errors,
-    touched,
-    handleChange,
-    isValid,
-    setFieldTouched
-  } = props;
+  const { values, handleChange } = props;
 
-  const change = (name, e) => {
-    e.persist();
-    handleChange(e);
-    setFieldTouched(name, true, false);
-  };
   return (
     <>
       <FormLabel component="legend">Billing and direct debit setup</FormLabel>
-      <RadioGroup
-        aria-label="billing"
-        name="billing"
-        onChange={handleChange}
-        value={values.billing}
-      >
+      <RadioGroup aria-label="billing" name="billing" onChange={handleChange}>
         <FormControlLabel
           value="creditCard"
           control={<Radio color="primary" />}

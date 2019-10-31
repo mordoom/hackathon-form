@@ -39,7 +39,6 @@ class InputForm extends Component {
     const activeStep = formConfig[currentStep - 1];
     const ActiveStep = activeStep.component;
     return (
-
       <Formik
         initialValues={values}
         enableReinitialize={false}
@@ -48,7 +47,6 @@ class InputForm extends Component {
         onSubmit={onNextStep}
       >
         {props => (
-
           <div>
             <ProgressIndicator currentStep={currentStep} />
             <Container maxWidth="md">

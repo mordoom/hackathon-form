@@ -19,6 +19,6 @@ export const step1Schema = object({
 });
 
 export const step2Schema = object({
-  billsAndLetters: string().required(),
-  billing: string().required("Please select a billing preference")
+  billing: string().required("Please select a billing preference"),
+  billsAndLetters: string().required("Please select a billing preference")
 });
