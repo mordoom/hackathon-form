@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.5.2",
+    "@origin-digital/reporting-client": "3.3.1",
     "@origin-digital/style-guide": "17.1.0",
     "formik": "^2.0.3",
     "react": "^16.11.0",
@@ -11,6 +12,9 @@
     "react-scripts": "3.2.0",
     "styled-components": "4.4.1",
     "yup": "^0.27.0"
+  },
+  "devDependencies": {
+    "@babel/runtime-corejs2": "^7.1.2"
   },
   "scripts": {
     "start": "react-scripts start",

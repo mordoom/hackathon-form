@@ -839,12 +839,20 @@
     "@babel/helper-plugin-utils" "^7.0.0"
     "@babel/plugin-transform-typescript" "^7.6.0"
 
-"@babel/runtime-corejs2@^7.0.0":
+"@babel/runtime-corejs2@^7.0.0", "@babel/runtime-corejs2@^7.1.2":
   version "7.6.3"
   resolved "https://artifactory.origindigital-dac.com.au/artifactory/api/npm/npm-all/@babel/runtime-corejs2/-/runtime-corejs2-7.6.3.tgz#de3f446b3fb688b98cbd220474d1a7cad909bcb8"
   integrity sha1-3j9Eaz+2iLmMvSIEdNGnytkJvLg=
   dependencies:
     core-js "^2.6.5"
+    regenerator-runtime "^0.13.2"
+
+"@babel/runtime-corejs3@^7.5.5":
+  version "7.6.3"
+  resolved "https://artifactory.origindigital-dac.com.au/artifactory/api/npm/npm-all/@babel/runtime-corejs3/-/runtime-corejs3-7.6.3.tgz#a2b2b7ceea6ecb37ff822d293a312f1f00c29b84"
+  integrity sha1-orK3zupuyzf/gi0pOjEvHwDCm4Q=
+  dependencies:
+    core-js-pure "^3.0.0"
     regenerator-runtime "^0.13.2"
 
 "@babel/runtime@7.6.0":
@@ -1270,6 +1278,13 @@
   integrity sha1-UEaNekz1vcTG90Z+Va7N2cj+vkQ=
   dependencies:
     "@origin-digital/helper" "^1.0.2"
+
+"@origin-digital/reporting-client@3.3.1":
+  version "3.3.1"
+  resolved "https://artifactory.origindigital-dac.com.au/artifactory/api/npm/npm-all/@origin-digital/reporting-client/-/@origin-digital/reporting-client-3.3.1.tgz#45343ce257ad8b0ebca498cc34067bbd1b2d887e"
+  integrity sha1-RTQ84letiw68pJjMNAZ7vRstiH4=
+  dependencies:
+    "@babel/runtime-corejs3" "^7.5.5"
 
 "@origin-digital/style-guide@17.1.0":
   version "17.1.0"
@@ -2986,6 +3001,11 @@ core-js-compat@^3.1.1:
   dependencies:
     browserslist "^4.6.6"
     semver "^6.3.0"
+
+core-js-pure@^3.0.0:
+  version "3.3.5"
+  resolved "https://artifactory.origindigital-dac.com.au/artifactory/api/npm/npm-all/core-js-pure/-/core-js-pure-3.3.5.tgz#23dc7e44bb946bf1752b377709e8591faffb0bac"
+  integrity sha1-I9x+RLuUa/F1Kzd3CehZH6/7C6w=
 
 core-js@3.2.1:
   version "3.2.1"
