@@ -25,15 +25,15 @@ class InputForm extends Component {
         email: "",
         phone: "",
         dateOfBirth: "",
-        lifeSupport: ""
+        lifeSupport: "",
+        billsAndLetters: "email",
+        billing: ""
       }
     };
   }
 
-
-
   render() {
-    const { classes, currentStep, onNextStep, onPrevStep } = this.props;
+    const { currentStep, onNextStep, onPrevStep } = this.props;
     const { values } = this.state;
     const activeStep = formConfig[currentStep - 1];
     const ActiveStep = activeStep.component;

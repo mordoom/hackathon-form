@@ -17,3 +17,8 @@ export const step1Schema = object({
     .required("Enter your date of birth"),
   lifeSupport: string().required("Please select a life support option")
 });
+
+export const step2Schema = object({
+  billsAndLetters: string().required(),
+  billing: string().required("Please select a billing preference")
+});
