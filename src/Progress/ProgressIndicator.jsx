@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Sticky from 'react-stickynode';
 import { Text, BREAK_POINTS } from '@origin-digital/style-guide';
+import { PercentageProgressBar } from './PercentageProgressBar';
 
 const STICKY_STYLES = {
   boxShadow: '0px 4px 6px 0px rgba(171,171,171,.2)',
@@ -42,8 +43,8 @@ export const ProgressIndicator = () => {
               <Text size="xs">
                 Step <Text inline fontWeight="medium" size="md">1</Text> / 4
               </Text>
+              <PercentageProgressBar percentage={80} />
             </Inner>
-            
           </Container>
         )}
       </Sticky>
