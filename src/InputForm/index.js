@@ -12,9 +12,6 @@ const styles = theme => ({
     alignItems: "center",
     padding: `${theme.spacing.unit * 5}px ${theme.spacing.unit * 5}px ${theme
       .spacing.unit * 5}px`
-  },
-  container: {
-    maxWidth: "200px"
   }
 });
 
@@ -22,7 +19,6 @@ class InputForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      activeStepIndex: 1,
       values: {
         firstName: "",
         lastName: "",
@@ -34,34 +30,27 @@ class InputForm extends Component {
     };
   }
 
-  handleNextStep = values => {
-    const nextStepIndex = this.state.activeStepIndex + 1;
-    this.setState({ activeStepIndex: nextStepIndex, values });
-  };
 
-  handlePrevStep = () => {
-    this.setState({ activeStepIndex: this.state.activeStepIndex - 1 });
-  };
 
   render() {
-    const classes = this.props;
-    const { activeStepIndex, values } = this.state;
-    const activeStep = formConfig[activeStepIndex - 1];
+    const { classes, currentStep, onNextStep, onPrevStep } = this.props;
+    const { values } = this.state;
+    const activeStep = formConfig[currentStep - 1];
     const ActiveStep = activeStep.component;
     return (
-      <div className={classes.container}>
+      <div>
         <Container maxWidth="md">
           <h1>Form</h1>
           <Formik
             initialValues={values}
             enableReinitialize={false}
             validationSchema={activeStep.validationSchema}
-            onSubmit={this.handleNextStep}
+            onSubmit={onNextStep}
           >
             {props => (
               <form onSubmit={props.handleSubmit}>
                 <ActiveStep {...props} />
-                {activeStepIndex < formConfig.length && (
+                {currentStep < formConfig.length && (
                   <Button
                     type="submit"
                     variant="contained"
@@ -71,7 +60,7 @@ class InputForm extends Component {
                     Next step
                   </Button>
                 )}
-                {activeStepIndex === formConfig.length && (
+                {currentStep === formConfig.length && (
                   <Button
                     type="submit"
                     variant="contained"
@@ -81,8 +70,8 @@ class InputForm extends Component {
                     Submit
                   </Button>
                 )}
-                {activeStepIndex > 1 && (
-                  <Button variant="contained" onClick={this.handlePrevStep}>
+                {currentStep > 1 && (
+                  <Button variant="contained" onClick={onPrevStep}>
                     Prev step
                   </Button>
                 )}
