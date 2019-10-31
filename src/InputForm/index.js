@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { Formik } from "formik";
 import withStyles from "@material-ui/core/styles/withStyles";
-import { Button, Container } from "@material-ui/core";
+import Button from "@material-ui/core/Button";
+import Container from "@material-ui/core/Container";
 import { formConfig } from "./formConfig";
 import { ProgressIndicator } from "../Progress";
 

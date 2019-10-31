@@ -4,6 +4,7 @@ const phoneRegExp = /(?:^0[2378][0-9]{8})$|(?:^04\d{8}$)/;
 const dobRegExp = /(^(((0[1-9]|1[0-9]|2[0-8])[\/](0[1-9]|1[012]))|((29|30|31)[\/](0[13578]|1[02]))|((29|30)[\/](0[4,6,9]|11)))[\/](19|[2-9][0-9])\d\d$)|(^29[\/]02[\/](19|[2-9][0-9])(00|04|08|12|16|20|24|28|32|36|40|44|48|52|56|60|64|68|72|76|80|84|88|92|96)$)/;
 
 export const step1Schema = object({
+  // address: string().required("Address is required"),
   firstName: string().required("First name is required"),
   lastName: string().required("Last name is required"),
   email: string()
@@ -20,6 +21,36 @@ export const step1Schema = object({
 
 export const step2Schema = object({
   billing: string().required("Please select a billing preference"),
+  cardNumber: string().when("billing", {
+    is: "creditCard",
+    then: string().required("Please enter your credit card number"),
+    otherwise: string()
+  }),
+  expiry: string().when("billing", {
+    is: "creditCard",
+    then: string().min(5).required("Please enter your credit card expiry"),
+    otherwise: string()
+  }),
+  cvv: string().when("billing", {
+    is: "creditCard",
+    then: string().min(3).required("Please enter your credit card CVV"),
+    otherwise: string()
+  }),
+  accountName: string().when("billing", {
+    is: "bankAccount",
+    then: string().required("Please enter your bank account name"),
+    otherwise: string()
+  }),
+  bsb: string().when("billing", {
+    is: "bankAccount",
+    then: string().min(7).required("Please enter your bank BSB"),
+    otherwise: string()
+  }),
+  accountNumber: string().when("billing", {
+    is: "bankAccount",
+    then: string().min(8).required("Please enter your bank account number"),
+    otherwise: string()
+  }),
   billsAndLetters: string().required("Please select a billing preference")
 });
 

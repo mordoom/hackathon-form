@@ -1,11 +1,13 @@
 import React from "react";
-import TextField from "@material-ui/core/TextField";
 import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormLabel from "@material-ui/core/FormLabel";
-import { makeStyles, createStyles } from "@material-ui/core";
+import makeStyles from "@material-ui/core/styles/makeStyles";
+import createStyles from "@material-ui/core/styles/createStyles";
+import { ConnectionAddress } from "@origin-digital/originate";
 import InputForm from "./";
+import { FormikTextField } from "./FormikTextField";
 
 const useStyles = makeStyles(theme =>
   createStyles({
@@ -41,33 +43,6 @@ const useStyles = makeStyles(theme =>
   })
 );
 
-const FormikTextField = ({
-  label,
-  fieldName,
-  values,
-  textField,
-  errors,
-  touched,
-  handleChange,
-  setFieldTouched,
-  ...props
-}) => (
-  <TextField
-    id={fieldName}
-    name={fieldName}
-    helperText={touched[fieldName] ? errors[fieldName] : ""}
-    error={touched[fieldName] && Boolean(errors[fieldName])}
-    label={label}
-    value={values[fieldName]}
-    onChange={handleChange}
-    onBlur={() => setFieldTouched(fieldName, true, false)}
-    variant="filled"
-    fullWidth
-    className={textField}
-    {...props}
-  />
-);
-
 export const Step1 = props => {
   const classes = useStyles();
   return (
@@ -86,6 +61,16 @@ export const Step1 = props => {
         setFieldTouched
       }) => (
         <>
+          {/* <ConnectionAddress
+            name="address"
+            addressTranslationApiEndPoint="https://addresstranslation-api-staging.api.origindigital-pac.com.au/api/v1/sap-addressId"
+            addressReverseLookupApiEndPoint="https://addresstranslation-api-staging.api.origindigital-pac.com.au/api/v1/sap-address"
+            addressTranslationApiKey="RTkOXSBckW5e8FYrU3vOp6KgJeUBasuI274eBAAz"
+            qasAuthToken="fb133c5e-c7e9-477f-8a62-f24d498866e0"
+            onChange={address =>
+              console.log("ConnectionAddressObject:", address)
+            }
+          /> */}
           <FormikTextField
             label="First name"
             fieldName="firstName"

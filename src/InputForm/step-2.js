@@ -4,6 +4,88 @@ import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormLabel from "@material-ui/core/FormLabel";
 import InputForm from ".";
+import { FormikTextField } from "./FormikTextField";
+
+const CreditCard = ({
+  values,
+  errors,
+  touched,
+  handleChange,
+  setFieldTouched
+}) => (
+  <>
+    <FormikTextField
+      label="Card number"
+      fieldName="cardNumber"
+      values={values}
+      errors={errors}
+      touched={touched}
+      handleChange={handleChange}
+      setFieldTouched={setFieldTouched}
+      inputProps={{ maxLength: 16 }}
+    />
+    <FormikTextField
+      label="Expiry"
+      fieldName="expiry"
+      values={values}
+      errors={errors}
+      touched={touched}
+      handleChange={handleChange}
+      setFieldTouched={setFieldTouched}
+      inputProps={{ maxLength: 5 }}
+    />
+    <FormikTextField
+      label="CVV"
+      fieldName="cvv"
+      values={values}
+      errors={errors}
+      touched={touched}
+      handleChange={handleChange}
+      setFieldTouched={setFieldTouched}
+      inputProps={{ maxLength: 3 }}
+    />
+  </>
+);
+
+const BankAccount = ({
+  values,
+  errors,
+  touched,
+  handleChange,
+  setFieldTouched
+}) => (
+  <>
+    <FormikTextField
+      label="Account name"
+      fieldName="accountName"
+      values={values}
+      errors={errors}
+      touched={touched}
+      handleChange={handleChange}
+      setFieldTouched={setFieldTouched}
+    />
+    <FormikTextField
+      label="BSB"
+      fieldName="bsb"
+      values={values}
+      errors={errors}
+      touched={touched}
+      handleChange={handleChange}
+      setFieldTouched={setFieldTouched}
+      inputProps={{ maxLength: 7 }}
+    />
+    <FormikTextField
+      label="Account number"
+      fieldName="accountNumber"
+      values={values}
+      errors={errors}
+      touched={touched}
+      handleChange={handleChange}
+      setFieldTouched={setFieldTouched}
+      inputProps={{ maxLength: 10 }}
+    />
+  </>
+);
 
 export class Step2 extends React.Component {
   render() {
@@ -39,11 +121,29 @@ export class Step2 extends React.Component {
                 control={<Radio color="primary" />}
                 label="Credit card"
               />
+              {values.billing === "creditCard" && (
+                <CreditCard
+                  values={values}
+                  errors={errors}
+                  touched={touched}
+                  handleChange={handleChange}
+                  setFieldTouched={setFieldTouched}
+                />
+              )}
               <FormControlLabel
                 value="bankAccount"
                 control={<Radio color="primary" />}
                 label="Bank account"
               />
+              {values.billing === "bankAccount" && (
+                <BankAccount
+                  values={values}
+                  errors={errors}
+                  touched={touched}
+                  handleChange={handleChange}
+                  setFieldTouched={setFieldTouched}
+                />
+              )}
               <FormControlLabel
                 value="manual"
                 control={<Radio color="primary" />}
