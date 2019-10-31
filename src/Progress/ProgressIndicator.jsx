@@ -67,7 +67,7 @@ export const ProgressIndicator = ({ currentStep }) => {
           <Container style={status === Sticky.STATUS_FIXED ? STICKY_STYLES : undefined}>
             <Inner>
               <Text size="xs">
-                Step <Text inline fontWeight="medium" size="md">1</Text> / 4
+                Step <Text inline fontWeight="medium" size="md">{currentStep}</Text> / {formConfig.length}
               </Text>
               <PercentageProgressBar percentage={percentage} />
             </Inner>
