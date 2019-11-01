@@ -12,6 +12,7 @@ const CreditCard = ({
   errors,
   touched,
   handleChange,
+  handleBlur,
   setFieldTouched
 }) => (
   <>
@@ -22,6 +23,7 @@ const CreditCard = ({
       errors={errors}
       touched={touched}
       handleChange={handleChange}
+      handleBlur={handleBlur}
       setFieldTouched={setFieldTouched}
       inputProps={{ maxLength: 16 }}
     />
@@ -31,7 +33,10 @@ const CreditCard = ({
       values={values}
       errors={errors}
       touched={touched}
+      type="tel"
+      pattern="[0-9\/]*"
       handleChange={handleChange}
+      handleBlur={handleBlur}
       setFieldTouched={setFieldTouched}
       inputProps={{ maxLength: 5 }}
     />
@@ -42,6 +47,7 @@ const CreditCard = ({
       errors={errors}
       touched={touched}
       handleChange={handleChange}
+      handleBlur={handleBlur}
       setFieldTouched={setFieldTouched}
       inputProps={{ maxLength: 3 }}
     />
@@ -53,6 +59,7 @@ const BankAccount = ({
   errors,
   touched,
   handleChange,
+  handleBlur,
   setFieldTouched
 }) => (
   <>
@@ -63,6 +70,7 @@ const BankAccount = ({
       errors={errors}
       touched={touched}
       handleChange={handleChange}
+      handleBlur={handleBlur}
       setFieldTouched={setFieldTouched}
     />
     <FormikTextField
@@ -72,6 +80,7 @@ const BankAccount = ({
       errors={errors}
       touched={touched}
       handleChange={handleChange}
+      handleBlur={handleBlur}
       setFieldTouched={setFieldTouched}
       inputProps={{ maxLength: 7 }}
     />
@@ -82,6 +91,7 @@ const BankAccount = ({
       errors={errors}
       touched={touched}
       handleChange={handleChange}
+      handleBlur={handleBlur}
       setFieldTouched={setFieldTouched}
       inputProps={{ maxLength: 10 }}
     />
@@ -103,7 +113,9 @@ export const Step2 = ({ values, currentStep, onNextStep, onPrevStep }) => {
         handleSubmit,
         handleChange,
         isValid,
-        setFieldTouched
+        setFieldTouched,
+        handleBlur,
+        validateField
       }) => (
         <>
           <FormLabel className={classes.formLabel} component="legend">
@@ -127,6 +139,7 @@ export const Step2 = ({ values, currentStep, onNextStep, onPrevStep }) => {
                 errors={errors}
                 touched={touched}
                 handleChange={handleChange}
+                handleBlur={handleBlur}
                 setFieldTouched={setFieldTouched}
               />
             )}
@@ -141,6 +154,7 @@ export const Step2 = ({ values, currentStep, onNextStep, onPrevStep }) => {
                 errors={errors}
                 touched={touched}
                 handleChange={handleChange}
+                handleBlur={handleBlur}
                 setFieldTouched={setFieldTouched}
               />
             )}
