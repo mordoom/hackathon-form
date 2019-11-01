@@ -16,6 +16,7 @@ export const Step1 = props => {
       currentStep={props.currentStep}
       onNextStep={props.onNextStep}
       onPrevStep={props.onPrevStep}
+      validateOnChange={true}
       render={({
         values,
         errors,
@@ -23,7 +24,8 @@ export const Step1 = props => {
         handleSubmit,
         handleChange,
         isValid,
-        setFieldTouched
+        setFieldTouched,
+        handleBlur
       }) => (
         <>
           {/* <ConnectionAddress
@@ -32,11 +34,13 @@ export const Step1 = props => {
             addressReverseLookupApiEndPoint="https://addresstranslation-api-staging.api.origindigital-pac.com.au/api/v1/sap-address"
             addressTranslationApiKey="RTkOXSBckW5e8FYrU3vOp6KgJeUBasuI274eBAAz"
             qasAuthToken="fb133c5e-c7e9-477f-8a62-f24d498866e0"
+            addressId="CRM0039955306"
             onChange={address =>
               console.log("ConnectionAddressObject:", address)
             }
           /> */}
           <FormikTextField
+            autoFocus={true}
             label="First name"
             fieldName="firstName"
             values={values}
@@ -45,6 +49,7 @@ export const Step1 = props => {
             touched={touched}
             handleChange={handleChange}
             setFieldTouched={setFieldTouched}
+            handleBlur={handleBlur}
           />
           <FormikTextField
             label="Last name"
@@ -55,6 +60,7 @@ export const Step1 = props => {
             touched={touched}
             handleChange={handleChange}
             setFieldTouched={setFieldTouched}
+            handleBlur={handleBlur}
           />
           <FormikTextField
             label="Email address"
@@ -65,6 +71,7 @@ export const Step1 = props => {
             touched={touched}
             handleChange={handleChange}
             setFieldTouched={setFieldTouched}
+            handleBlur={handleBlur}
           />
           <FormikTextField
             label="Phone (landline or mobile)"
@@ -76,6 +83,7 @@ export const Step1 = props => {
             touched={touched}
             handleChange={handleChange}
             setFieldTouched={setFieldTouched}
+            handleBlur={handleBlur}
           />
           <FormikTextField
             label="Date of birth (DD/MM/YYYY)"
@@ -87,6 +95,7 @@ export const Step1 = props => {
             touched={touched}
             handleChange={handleChange}
             setFieldTouched={setFieldTouched}
+            handleBlur={handleBlur}
           />
           <FormLabel className={classes.formLabel} component="legend">
             Life support
