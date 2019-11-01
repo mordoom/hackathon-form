@@ -32,6 +32,7 @@ export const formConfig = [
     step: 3,
     component: Step3,
     validationSchema: step3Schema,
-    progress: { from: 91, to: 99 }
+    progress: { from: 91, to: 100 },
+    values: {}
   }
 ];

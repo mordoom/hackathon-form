@@ -37,10 +37,10 @@ const Inner = styled.div`
 `;
 
 const getPercentage = (from, to, fraction) => {
+  const safeFraction = fraction || 0;
   const total = to - from;
-  console.log('total is', total, 'fraction:', fraction);
   
-  const progress = Math.round(fraction * total) + from;
+  const progress = Math.round(safeFraction * total) + from;
   return clamp(progress, from, to);
 }
 
@@ -51,11 +51,13 @@ export const ProgressIndicator = ({ currentStep }) => {
   const context = useFormikContext();
 
   window.context = context;
+  window.validationSchema = validationSchema;
   const numFieldsInStep = Object.keys(validationSchema.describe().fields).length;
   const errors = context.dirty ? context.errors : context.initialErrors;
-
+  
   const numFieldsValid = numFieldsInStep - Object.keys(errors).length;
-  const percentage = getPercentage(from, to, numFieldsValid / numFieldsInStep);
+  const fractionValid = context.isSubmitting ? 1 : numFieldsValid / numFieldsInStep;
+  const percentage = getPercentage(from, to, fractionValid);
   
   return (
     <StyledSticky>
