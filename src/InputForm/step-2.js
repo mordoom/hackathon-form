@@ -14,7 +14,8 @@ const CreditCard = ({
   touched,
   handleChange,
   handleBlur,
-  setFieldTouched
+  setFieldTouched,
+  classes
 }) => (
   <>
     <FormikTextField
@@ -23,6 +24,7 @@ const CreditCard = ({
       values={values}
       errors={errors}
       touched={touched}
+      textField={classes.textField}
       handleChange={handleChange}
       handleBlur={handleBlur}
       setFieldTouched={setFieldTouched}
@@ -34,10 +36,13 @@ const CreditCard = ({
       values={values}
       errors={errors}
       touched={touched}
+      textField={classes.textField}
       handleChange={handleChange}
       handleBlur={handleBlur}
       setFieldTouched={setFieldTouched}
       inputProps={{ maxLength: 5 }}
+      fullWidth={false}
+      width="200px"
     />
     <FormikTextField
       label="CVV"
@@ -45,10 +50,13 @@ const CreditCard = ({
       values={values}
       errors={errors}
       touched={touched}
+      textField={classes.textField}
       handleChange={handleChange}
       handleBlur={handleBlur}
       setFieldTouched={setFieldTouched}
       inputProps={{ maxLength: 3 }}
+      fullWidth={false}
+      width="200px"
     />
   </>
 );
@@ -59,7 +67,8 @@ const BankAccount = ({
   touched,
   handleChange,
   handleBlur,
-  setFieldTouched
+  setFieldTouched,
+  classes
 }) => (
   <>
     <FormikTextField
@@ -68,6 +77,7 @@ const BankAccount = ({
       values={values}
       errors={errors}
       touched={touched}
+      textField={classes.textField}
       handleChange={handleChange}
       handleBlur={handleBlur}
       setFieldTouched={setFieldTouched}
@@ -78,6 +88,7 @@ const BankAccount = ({
       values={values}
       errors={errors}
       touched={touched}
+      textField={classes.textField}
       handleChange={handleChange}
       handleBlur={handleBlur}
       setFieldTouched={setFieldTouched}
@@ -89,6 +100,7 @@ const BankAccount = ({
       values={values}
       errors={errors}
       touched={touched}
+      textField={classes.textField}
       handleChange={handleChange}
       handleBlur={handleBlur}
       setFieldTouched={setFieldTouched}
@@ -140,6 +152,7 @@ export const Step2 = ({ values, currentStep, onNextStep, onPrevStep }) => {
                 handleChange={handleChange}
                 handleBlur={handleBlur}
                 setFieldTouched={setFieldTouched}
+                classes={classes}
               />
             )}
             <FormControlLabel
@@ -155,6 +168,7 @@ export const Step2 = ({ values, currentStep, onNextStep, onPrevStep }) => {
                 handleChange={handleChange}
                 handleBlur={handleBlur}
                 setFieldTouched={setFieldTouched}
+                classes={classes}
               />
             )}
             <FormControlLabel

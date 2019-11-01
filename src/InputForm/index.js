@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import styled from 'styled-components';
+import styled from "styled-components";
 import { Formik } from "formik";
 import withStyles from "@material-ui/core/styles/withStyles";
 import Button from "@material-ui/core/Button";
@@ -8,6 +8,7 @@ import { formConfig } from "./formConfig";
 import { ProgressIndicator } from "../Progress";
 import uniqBy from "lodash/uniqBy";
 import isEmpty from "lodash/isEmpty";
+import { useStyles } from "./styles";
 
 const styles = theme => ({
   paper: {
@@ -22,12 +23,57 @@ const styles = theme => ({
 
 const Actions = styled.div`
   display: flex;
-  justify-content: center;
   margin: 32px 0;
   & > *:not(:last-child) {
     margin-right: 16px;
   }
 `;
+
+const NavigationButtons = ({
+  currentStep,
+  isValid,
+  dirty,
+  errors,
+  onPrevStep
+}) => {
+  const classes = useStyles();
+  return (
+    <>
+      {currentStep < formConfig.length && (
+        <Button
+          type="submit"
+          variant="contained"
+          color="primary"
+          className={classes.button}
+          disabled={dirty ? !isValid : !isEmpty(errors)}
+        >
+          Next step
+        </Button>
+      )}
+      {currentStep === formConfig.length && (
+        <Button
+          type="submit"
+          variant="contained"
+          color="primary"
+          className={classes.button}
+          disabled={dirty ? !isValid : !isEmpty(errors)}
+        >
+          Submit
+        </Button>
+      )}
+      {currentStep > 1 && (
+        <Button
+          variant="contained"
+          color="secondary"
+          className={classes.secondaryButton}
+          onClick={onPrevStep}
+        >
+          Prev step
+        </Button>
+      )}
+    </>
+  );
+};
 
 class InputForm extends Component {
   constructor(props) {
@@ -107,31 +153,13 @@ class InputForm extends Component {
               <form onSubmit={props.handleSubmit}>
                 {render(props)}
                 <Actions>
-                  {currentStep < formConfig.length && (
-                    <Button
-                      type="submit"
-                      variant="contained"
-                      color="primary"
-                      disabled={props.dirty ? !props.isValid : !isEmpty(errors)}
-                    >
-                      Next step
-                    </Button>
-                  )}
-                  {currentStep === formConfig.length && (
-                    <Button
-                      type="submit"
-                      variant="contained"
-                      color="primary"
-                      disabled={props.dirty ? !props.isValid : !isEmpty(errors)}
-                    >
-                      Submit
-                    </Button>
-                  )}
-                  {currentStep > 1 && (
-                    <Button variant="contained" onClick={onPrevStep}>
-                      Go back
-                    </Button>
-                  )}
+                  <NavigationButtons
+                    currentStep={currentStep}
+                    onPrevStep={onPrevStep}
+                    errors={errors}
+                    dirty={props.dirty}
+                    isValid={props.isValid}
+                  />
                 </Actions>
               </form>
             </Container>
