@@ -7,7 +7,7 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentStep: 3,
+      currentStep: 1,
       values: [
         {
           firstName: "",
