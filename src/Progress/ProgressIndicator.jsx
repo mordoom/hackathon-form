@@ -11,7 +11,8 @@ import uniq from 'lodash/uniq';
 
 const STICKY_STYLES = {
   boxShadow: '0px 4px 6px 0px rgba(171,171,171,.2)',
-  padding: '16px 0',
+  paddingTop: '16px',
+  paddingBottom: '16px',
 };
 
 const StyledSticky = styled.div`
@@ -29,7 +30,6 @@ const Container = styled.div`
 
 const Inner = styled.div`
   display: flex;
-
   @media only screen and (min-width: ${BREAK_POINTS.Min.SM}) {
     max-width: 720px;
     margin: 0 auto;
@@ -50,8 +50,6 @@ export const ProgressIndicator = ({ currentStep }) => {
   const { from, to } = progress;
   const context = useFormikContext();
 
-  window.context = context;
-  window.validationSchema = validationSchema;
   const numFieldsInStep = Object.keys(validationSchema.describe().fields).length;
   const errors = context.dirty ? context.errors : context.initialErrors;
   
