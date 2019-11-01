@@ -108,12 +108,22 @@ export const Step1 = props => {
           >
             <FormControlLabel
               value="yes"
-              control={<Radio className={classes.radio} color="primary" />}
+              control={
+                <Radio
+                  classes={{ root: classes.radio, checked: classes.checked }}
+                  color="primary"
+                />
+              }
               label="Yes"
             />
             <FormControlLabel
               value="no"
-              control={<Radio className={classes.radio} color="primary" />}
+              control={
+                <Radio
+                  classes={{ root: classes.radio, checked: classes.checked }}
+                  color="primary"
+                />
+              }
               label="No"
             />
           </RadioGroup>

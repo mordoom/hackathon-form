@@ -141,7 +141,12 @@ export const Step2 = ({ values, currentStep, onNextStep, onPrevStep }) => {
           >
             <FormControlLabel
               value="creditCard"
-              control={<Radio color="primary" />}
+              control={
+                <Radio
+                  classes={{ root: classes.radio, checked: classes.checked }}
+                  color="primary"
+                />
+              }
               label="Credit card"
             />
             {values.billing === "creditCard" && (
@@ -157,7 +162,12 @@ export const Step2 = ({ values, currentStep, onNextStep, onPrevStep }) => {
             )}
             <FormControlLabel
               value="bankAccount"
-              control={<Radio color="primary" />}
+              control={
+                <Radio
+                  classes={{ root: classes.radio, checked: classes.checked }}
+                  color="primary"
+                />
+              }
               label="Bank account"
             />
             {values.billing === "bankAccount" && (
@@ -173,7 +183,12 @@ export const Step2 = ({ values, currentStep, onNextStep, onPrevStep }) => {
             )}
             <FormControlLabel
               value="manual"
-              control={<Radio color="primary" />}
+              control={
+                <Radio
+                  classes={{ root: classes.radio, checked: classes.checked }}
+                  color="primary"
+                />
+              }
               label="Pay each bill manually"
             />
           </RadioGroup>
@@ -190,12 +205,22 @@ export const Step2 = ({ values, currentStep, onNextStep, onPrevStep }) => {
           >
             <FormControlLabel
               value="email"
-              control={<Radio contr color="primary" />}
+              control={
+                <Radio
+                  classes={{ root: classes.radio, checked: classes.checked }}
+                  color="primary"
+                />
+              }
               label="By email"
             />
             <FormControlLabel
               value="post"
-              control={<Radio color="primary" />}
+              control={
+                <Radio
+                  classes={{ root: classes.radio, checked: classes.checked }}
+                  color="primary"
+                />
+              }
               label="By post"
             />
           </RadioGroup>

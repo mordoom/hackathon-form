@@ -17,12 +17,12 @@ export const useStyles = makeStyles(theme =>
       padding: theme.spacing(2),
       borderRadius: 0,
       textTransform: "none",
-      marginRight: '32px',
+      marginRight: "32px",
       fontSize: "16px",
-      boxShadow: 'none',
+      boxShadow: "none",
       "&:hover": {
         backgroundColor: "rgb(179, 0, 0)",
-        boxShadow: 'none',
+        boxShadow: "none"
       },
       "&:disabled": {
         backgroundColor: "rgb(248, 173, 173)",
@@ -36,12 +36,12 @@ export const useStyles = makeStyles(theme =>
       borderRadius: 0,
       textTransform: "none",
       fontSize: "16px",
-      boxShadow: 'none',
-      border: '1px solid rgb(236, 0, 0)',
+      boxShadow: "none",
+      border: "1px solid rgb(236, 0, 0)",
       "&:hover": {
         backgroundColor: "rgb(179, 0, 0)",
-        boxShadow: 'none',
-        color: 'white'
+        boxShadow: "none",
+        color: "white"
       },
       "&:disabled": {
         backgroundColor: "rgb(248, 173, 173)",
@@ -50,9 +50,10 @@ export const useStyles = makeStyles(theme =>
     },
     formLabel: { textAlign: "left" },
     radio: {
-      "& .MuiRadio-colorPrimary.Mui-checked": {
+      "&$checked": {
         color: "#ffb432"
       }
-    }
+    },
+    checked: {}
   })
 );
