@@ -64,7 +64,6 @@ class InputForm extends Component {
     const { currentStep, onNextStep, onPrevStep, values, render } = this.props;
     const { errors } = this.state;
     const activeStep = this.configForCurrentStep;
-    console.log(errors, 'isEmpty?', isEmpty(errors));
 
     if (!errors) {
       return null;

@@ -70,4 +70,5 @@ export const step2Schema = object({
   billsAndLetters: string().required("Please select a billing preference")
 });
 
-export const step3Schema = object({});
+export const step3Schema = object({}).test('async', () =>
+  new Promise(resolve => setTimeout(() => resolve(true), 1000)));

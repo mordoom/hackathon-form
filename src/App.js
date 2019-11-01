@@ -17,16 +17,20 @@ export default class App extends React.Component {
           dateOfBirth: "",
           lifeSupport: ""
         },
-        { billsAndLetters: "email", billing: "" }
+        { billsAndLetters: "email", billing: "" },
+        {}
       ]
     };
   }
 
+  
+
   handleNextStep = values => {
     const { currentStep } = this.state;
     const nextStepIndex = currentStep + 1;
-    const newValues = [...this.state.values];
+    const newValues = [...this.state.values];    
     newValues[currentStep - 1] = values;
+
     this.setState({ currentStep: nextStepIndex, values: newValues });
   };
 
@@ -36,18 +40,27 @@ export default class App extends React.Component {
 
   render() {
     const { values, currentStep } = this.state;
-    const activeStep = formConfig[currentStep - 1];
-    const ActiveStep = activeStep.component;
-
+    let ActiveStep;
+    if (currentStep <= formConfig.length) {
+      const activeStep = formConfig[currentStep - 1];
+      ActiveStep = activeStep.component;
+    }
+    
+    console.log('Current step', currentStep)
     return (
       <div className="App">
         <Header />
-        <ActiveStep
-          values={values[currentStep - 1]}
-          currentStep={currentStep}
-          onNextStep={this.handleNextStep}
-          onPrevStep={this.handlePrevStep}
-        />
+        {currentStep > formConfig.length ?
+          <div>Thank you</div>
+        :
+          <ActiveStep
+            values={values[currentStep - 1]}
+            currentStep={currentStep}
+            onNextStep={this.handleNextStep}
+            onPrevStep={this.handlePrevStep}
+          />
+        }
+        
       </div>
     );
   }
