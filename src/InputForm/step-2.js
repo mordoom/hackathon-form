@@ -6,6 +6,7 @@ import FormLabel from "@material-ui/core/FormLabel";
 import InputForm from ".";
 import { FormikTextField } from "./FormikTextField";
 import { useStyles } from "./styles";
+import { Grid, Typography } from "@material-ui/core";
 
 const CreditCard = ({
   values,
@@ -164,6 +165,7 @@ export const Step2 = ({ values, currentStep, onNextStep, onPrevStep }) => {
               label="Pay each bill manually"
             />
           </RadioGroup>
+          <Typography component="div" style={{ marginTop: "32px" }} />
           <FormLabel className={classes.formLabel} component="legend">
             Your bills and letters preference
           </FormLabel>
