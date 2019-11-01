@@ -2,7 +2,7 @@ import React from "react";
 import "./App.css";
 import { Header } from "./Header";
 import { formConfig } from "./InputForm/formConfig";
-
+import { ThankYou } from './ThankYou';
 export default class App extends React.Component {
   constructor(props) {
     super(props);
@@ -51,7 +51,11 @@ export default class App extends React.Component {
       <div className="App">
         <Header />
         {currentStep > formConfig.length ?
-          <div>Thank you</div>
+          <ThankYou formData={values.reduce((form, stepValues) => ({
+            ...form,
+            ...stepValues
+            }), {})}
+          />
         :
           <ActiveStep
             values={values[currentStep - 1]}
