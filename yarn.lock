@@ -1334,7 +1334,7 @@
     cleave.js "^1.0.1"
     date-fns "^2.0.0-alpha.25"
 
-"@origin-digital/originate@7.1.2", "@origin-digital/originate@^7.1.2":
+"@origin-digital/originate@^7.1.2":
   version "7.1.2"
   resolved "https://artifactory.origindigital-dac.com.au/artifactory/api/npm/npm-all/@origin-digital/originate/-/@origin-digital/originate-7.1.2.tgz#06a34618d4f0359c21e56a95a63b7458417949fa"
   integrity sha1-BqNGGNTwNZwh5WqVpjt0WEF5Sfo=
