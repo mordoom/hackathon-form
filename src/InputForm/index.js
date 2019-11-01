@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import styled from 'styled-components';
 import { Formik } from "formik";
 import withStyles from "@material-ui/core/styles/withStyles";
 import Button from "@material-ui/core/Button";
@@ -18,6 +19,15 @@ const styles = theme => ({
       .spacing.unit * 5}px`
   }
 });
+
+const Actions = styled.div`
+  display: flex;
+  justify-content: center;
+  margin: 32px 0;
+  & > *:not(:last-child) {
+    margin-right: 16px;
+  }
+`;
 
 class InputForm extends Component {
   constructor(props) {
@@ -96,31 +106,33 @@ class InputForm extends Component {
             <Container maxWidth="md">
               <form onSubmit={props.handleSubmit}>
                 {render(props)}
-                {currentStep < formConfig.length && (
-                  <Button
-                    type="submit"
-                    variant="contained"
-                    color="primary"
-                    disabled={props.dirty ? !props.isValid : !isEmpty(errors)}
-                  >
-                    Next step
-                  </Button>
-                )}
-                {currentStep === formConfig.length && (
-                  <Button
-                    type="submit"
-                    variant="contained"
-                    color="primary"
-                    disabled={props.dirty ? !props.isValid : !isEmpty(errors)}
-                  >
-                    Submit
-                  </Button>
-                )}
-                {currentStep > 1 && (
-                  <Button variant="contained" onClick={onPrevStep}>
-                    Prev step
-                  </Button>
-                )}
+                <Actions>
+                  {currentStep < formConfig.length && (
+                    <Button
+                      type="submit"
+                      variant="contained"
+                      color="primary"
+                      disabled={props.dirty ? !props.isValid : !isEmpty(errors)}
+                    >
+                      Next step
+                    </Button>
+                  )}
+                  {currentStep === formConfig.length && (
+                    <Button
+                      type="submit"
+                      variant="contained"
+                      color="primary"
+                      disabled={props.dirty ? !props.isValid : !isEmpty(errors)}
+                    >
+                      Submit
+                    </Button>
+                  )}
+                  {currentStep > 1 && (
+                    <Button variant="contained" onClick={onPrevStep}>
+                      Go back
+                    </Button>
+                  )}
+                </Actions>
               </form>
             </Container>
           </div>

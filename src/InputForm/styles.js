@@ -13,13 +13,13 @@ export const useStyles = makeStyles(theme =>
         }
       },
       button: {
-        backgroundColor: "rgb(236, 0, 0)",
+        backgroundColor: "#ec0000",
         padding: theme.spacing(2),
         borderRadius: 0,
         textTransform: "none",
         fontSize: "16px",
         "&:hover": {
-          backgroundColor: "rgb(179, 0, 0)"
+          backgroundColor: "rgb(179, 0, 0);"
         },
         "&:disabled": {
           backgroundColor: "rgb(248, 173, 173)",
