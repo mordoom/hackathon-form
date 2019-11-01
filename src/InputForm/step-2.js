@@ -6,7 +6,7 @@ import FormLabel from "@material-ui/core/FormLabel";
 import InputForm from ".";
 import { FormikTextField } from "./FormikTextField";
 import { useStyles } from "./styles";
-import { Grid, Typography } from "@material-ui/core";
+import { Typography } from "@material-ui/core";
 
 const CreditCard = ({
   values,
@@ -34,8 +34,6 @@ const CreditCard = ({
       values={values}
       errors={errors}
       touched={touched}
-      type="tel"
-      pattern="[0-9\/]*"
       handleChange={handleChange}
       handleBlur={handleBlur}
       setFieldTouched={setFieldTouched}

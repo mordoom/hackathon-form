@@ -1,7 +1,7 @@
 import axios from "axios";
 import debounce from 'lodash/debounce';
 
-const bsbValidation = async (
+export const asyncBsbValidation = async (
   bsb,
   callbacks,
   validationUrl = "https://digital.api.odcdn.com.au/api/v1/tests/bank"
@@ -16,4 +16,4 @@ const bsbValidation = async (
     .then(response => response.data.data.isValid);
 };
 
-export const asyncBsbValidation = debounce(bsbValidation, 500);
+//export const asyncBsbValidation = debounce(bsbValidation, 500);
